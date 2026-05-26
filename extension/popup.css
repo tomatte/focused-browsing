@@ -43,9 +43,37 @@ header h1 {
 }
 
 .subtitle {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   color: var(--muted);
   font-size: 13px;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 10px;
+  background: var(--surface);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
 }
 
 label {
@@ -143,15 +171,15 @@ button[type="submit"]:hover {
   color: var(--accent);
 }
 
-.domain-list {
+.item-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 240px;
+  max-height: 200px;
   overflow-y: auto;
 }
 
-.domain-list li {
+.item-list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -164,7 +192,7 @@ button[type="submit"]:hover {
   box-shadow: var(--shadow);
 }
 
-.domain-list li span {
+.item-list li span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -172,7 +200,7 @@ button[type="submit"]:hover {
   font-size: 13px;
 }
 
-.domain-list li button {
+.item-list li button {
   flex-shrink: 0;
   padding: 4px 8px;
   background: transparent;

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Focused Browsing — Bloqueador de Sites",
-  "version": "1.0.0",
-  "description": "Bloqueia o acesso a sites cujo domínio está na sua blacklist personalizada.",
+  "version": "1.1.0",
+  "description": "Bloqueia sites por domínio ou por palavras-chave encontradas na página.",
   "permissions": [
     "storage",
     "declarativeNetRequest",
@@ -12,6 +12,13 @@
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/keywords.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "action": {
     "default_title": "Focused Browsing",
     "default_popup": "popup.html",

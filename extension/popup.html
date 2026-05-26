@@ -9,38 +9,95 @@
   <body>
     <header>
       <h1>Focused Browsing</h1>
-      <p class="subtitle">Gerencie sites bloqueados</p>
+      <p class="subtitle">Gerencie bloqueios por site e por conteúdo</p>
     </header>
 
-    <form id="add-form" autocomplete="off">
-      <label for="domain-input">Adicionar domínio</label>
-      <div class="row">
-        <input
-          id="domain-input"
-          type="text"
-          placeholder="exemplo.com"
-          spellcheck="false"
-          required
-        />
-        <button type="submit">Adicionar</button>
-      </div>
-      <p class="hint">Aceita URLs completas; subdomínios do domínio também serão bloqueados.</p>
-    </form>
+    <nav class="tabs" role="tablist">
+      <button
+        type="button"
+        class="tab active"
+        role="tab"
+        aria-selected="true"
+        data-tab="domains"
+        id="tab-domains"
+      >
+        Domínios
+      </button>
+      <button
+        type="button"
+        class="tab"
+        role="tab"
+        aria-selected="false"
+        data-tab="keywords"
+        id="tab-keywords"
+      >
+        Palavras-chave
+      </button>
+    </nav>
 
     <p id="status" class="status" role="status" aria-live="polite"></p>
 
-    <section class="list-section">
-      <div class="list-header">
-        <h2>Blacklist</h2>
-        <button type="button" id="clear-btn" class="link-btn" title="Remover todos">
-          Limpar tudo
-        </button>
+    <section id="panel-domains" class="panel active" role="tabpanel" aria-labelledby="tab-domains">
+      <form id="add-domain-form" autocomplete="off">
+        <label for="domain-input">Adicionar domínio</label>
+        <div class="row">
+          <input
+            id="domain-input"
+            type="text"
+            placeholder="exemplo.com"
+            spellcheck="false"
+          />
+          <button type="submit">Adicionar</button>
+        </div>
+        <p class="hint">Subdomínios do domínio também serão bloqueados.</p>
+      </form>
+
+      <div class="list-section">
+        <div class="list-header">
+          <h2>Sites bloqueados</h2>
+          <button type="button" id="clear-domains-btn" class="link-btn">Limpar tudo</button>
+        </div>
+        <ul id="domain-list" class="item-list"></ul>
+        <p id="domain-empty" class="empty">Nenhum site bloqueado.</p>
       </div>
-      <ul id="domain-list" class="domain-list"></ul>
-      <p id="empty-state" class="empty">Nenhum site bloqueado.</p>
+    </section>
+
+    <section
+      id="panel-keywords"
+      class="panel"
+      role="tabpanel"
+      aria-labelledby="tab-keywords"
+      hidden
+    >
+      <form id="add-keyword-form" autocomplete="off">
+        <label for="keyword-input">Adicionar palavra-chave</label>
+        <div class="row">
+          <input
+            id="keyword-input"
+            type="text"
+            placeholder="aposta, bet, ganhe dinheiro"
+            spellcheck="false"
+          />
+          <button type="submit">Adicionar</button>
+        </div>
+        <p class="hint">
+          A página é bloqueada se o texto contiver a palavra ou frase (sem diferenciar
+          maiúsculas/minúsculas).
+        </p>
+      </form>
+
+      <div class="list-section">
+        <div class="list-header">
+          <h2>Palavras bloqueadas</h2>
+          <button type="button" id="clear-keywords-btn" class="link-btn">Limpar tudo</button>
+        </div>
+        <ul id="keyword-list" class="item-list"></ul>
+        <p id="keyword-empty" class="empty">Nenhuma palavra-chave cadastrada.</p>
+      </div>
     </section>
 
     <script src="lib/domains.js"></script>
+    <script src="lib/keywords.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>
