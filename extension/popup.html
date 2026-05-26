@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focused Browsing</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Focused Browsing</h1>
+      <p class="subtitle">Gerencie sites bloqueados</p>
+    </header>
+
+    <form id="add-form" autocomplete="off">
+      <label for="domain-input">Adicionar domínio</label>
+      <div class="row">
+        <input
+          id="domain-input"
+          type="text"
+          placeholder="exemplo.com"
+          spellcheck="false"
+          required
+        />
+        <button type="submit">Adicionar</button>
+      </div>
+      <p class="hint">Aceita URLs completas; subdomínios do domínio também serão bloqueados.</p>
+    </form>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section class="list-section">
+      <div class="list-header">
+        <h2>Blacklist</h2>
+        <button type="button" id="clear-btn" class="link-btn" title="Remover todos">
+          Limpar tudo
+        </button>
+      </div>
+      <ul id="domain-list" class="domain-list"></ul>
+      <p id="empty-state" class="empty">Nenhum site bloqueado.</p>
+    </section>
+
+    <script src="lib/domains.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

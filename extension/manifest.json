@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Focused Browsing — Bloqueador de Sites",
+  "version": "1.0.0",
+  "description": "Bloqueia o acesso a sites cujo domínio está na sua blacklist personalizada.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Focused Browsing",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html", "blocked.css", "blocked.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "focused-browsing@extension.local",
+      "strict_min_version": "113.0"
+    }
+  }
+}
